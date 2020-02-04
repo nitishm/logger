@@ -1,6 +1,8 @@
 # logger
 A wrapper around github.com/sirupsen/logrus that allows setting default fields, and supports adding and removing configurable fields
 
+[![GoDoc](https://godoc.org/github.com/nitishm/logger?status.svg)](https://godoc.org/github.com/nitishm/logger)
+
 # Supported Methods
 ```go
 // Encapsulates all supported logrus methods
