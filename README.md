@@ -2,6 +2,22 @@
 A wrapper around https://github.com/sirupsen/logrus that allows setting default fields, and supports adding and removing configurable fields.
 
 [![GoDoc](https://godoc.org/github.com/nitishm/logger?status.svg)](https://godoc.org/github.com/nitishm/logger)
+# Usage
+```go
+import (
+	"github.com/nitishm/logger"
+	log "github.com/sirupsen/logrus"
+)
+
+func main() {
+  level := "info"
+	l := logger.New()
+	l.Logger.SetLevel(level)
+	l.Logger.SetFormatter(&log.JSONFormatter{})
+	l.Logger.SetReportCaller(true)
+  ...
+}
+```
 
 # Supported Methods
 ```go
