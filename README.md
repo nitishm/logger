@@ -17,6 +17,26 @@ func main() {
 	l.Logger.SetReportCaller(true)
   ...
 }
+
+func() {
+  ...
+  defer l.RemoveFieldsByKey("label_selector")
+  l.AddField("label_selectors", label.String())
+  ...
+  f := log.Fields{
+      "num_bytes":   summary.NumBytes,
+      "duration":    summary.Duration,
+  }
+  defer l.RemoveFields(f)
+  l.AddFields(f)
+  ...
+  err := doSomething(context.TODO(), input)
+  if err != nil {
+    err = c.l.WrapAndPrintWithError(err, fmt.Sprintf("Failed to CreateOrUpdate Capture instance for ID %s", c.id))
+    return err
+  }
+  ...
+}
 ```
 
 # Supported Methods
