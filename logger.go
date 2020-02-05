@@ -1,10 +1,10 @@
 package logger
 
 import (
-"fmt"
+	"fmt"
 
-"github.com/pkg/errors"
-log "github.com/sirupsen/logrus"
+	"github.com/pkg/errors"
+	log "github.com/sirupsen/logrus"
 )
 
 // DefaultFieldsHook implements the logrus Hook interface
@@ -125,7 +125,7 @@ func (l *logger) ResetFields() {
 func (l *logger) WrapAndPrintWithError(err error, format string, args ...interface{}) error {
 	msg := fmt.Sprintf(format, args)
 	err = errors.Wrap(err, msg)
-	l.WithError(err).Print(msg)
+	l.WithError(err).Error(msg)
 	return err
 }
 
