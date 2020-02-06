@@ -123,7 +123,7 @@ func (l *logger) ResetFields() {
 // WrapAndPrintWithError is a combination function that helps us log the error as well as wrap it with the custom error
 // message
 func (l *logger) WrapAndPrintWithError(err error, format string, args ...interface{}) error {
-	msg := fmt.Sprintf(format, args)
+	msg := fmt.Sprintf(format, args...)
 	err = errors.Wrap(err, msg)
 	l.WithError(err).Error(msg)
 	return err
@@ -131,6 +131,6 @@ func (l *logger) WrapAndPrintWithError(err error, format string, args ...interfa
 
 // PrintWithError is a wrapper that helps reduce the verbosity of the WithError logrus method
 func (l *logger) PrintWithError(err error, format string, args ...interface{}) {
-	msg := fmt.Sprintf(format, args)
+	msg := fmt.Sprintf(format, args...)
 	l.WithError(err).Error(msg)
 }
