@@ -157,7 +157,8 @@ func (l *logger) RemoveFields(fields log.Fields) {
 	defer l.updateFields()
 	l.mu.Lock()
 	for k, _ := range fields {
-		l.RemoveFieldsByKey(k)
+		delete(l.fields, k)
+		delete(l.Data, k)
 	}
 	l.mu.Unlock()
 }
